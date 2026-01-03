@@ -85,9 +85,10 @@
       "patterns": [
         {
           "name": "string.quoted.double.interpolated.surge",
-          "begin": "\\bf\"",
+          "begin": "\\b(f)(\")",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.surge" }
+            "1": { "name": "storage.type.string.prefix.surge" },
+            "2": { "name": "punctuation.definition.string.begin.surge" }
           },
           "end": "\"",
           "endCaptures": {
@@ -134,14 +135,15 @@
         },
         {
           "name": "meta.interpolation.surge",
-          "begin": "\\{",
+          "begin": "\\{(?!\\{)",
           "beginCaptures": {
             "0": { "name": "punctuation.section.interpolation.begin.surge" }
           },
-          "end": "\\}",
+          "end": "\\}(?!\\})",
           "endCaptures": {
             "0": { "name": "punctuation.section.interpolation.end.surge" }
           },
+          "contentName": "source.surge",
           "patterns": [
             { "include": "$self" }
           ]
